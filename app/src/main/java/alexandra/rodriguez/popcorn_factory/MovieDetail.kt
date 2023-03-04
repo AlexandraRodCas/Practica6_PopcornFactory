@@ -53,6 +53,7 @@ class MovieDetail : AppCompatActivity() {
                         while (i < (20 - ns)) {
                             var elementoBundle:String = bundle.getString("asientoTomado$i").toString()
                             intent.putExtra("asientoTomado$i", elementoBundle)
+                            Log.d("DETAIL ASI", "$elementoBundle")
 
                             i++
                         }

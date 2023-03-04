@@ -33,7 +33,7 @@ class ResumenActivity : AppCompatActivity() {
             asientoIntent = bundle.getString("asiento").toString()
             pelicula = bundle.getString("titulo").toString()
             posMovie = bundle.getInt("id")
-            asientosDisponibles = bundle.getInt("seatsAvailable")
+            asientosDisponibles = bundle.getInt("asientosDisponiblesSeat")-1
             header.setImageResource(bundle.getInt("header"))
             titulo.setText("You buy a ticket for " + pelicula)
             nombre.setText("Thanks for buying, " + nombreIntent + "!")
@@ -45,14 +45,17 @@ class ResumenActivity : AppCompatActivity() {
             intento.putExtra("asiento",  asientoIntent)
             intento.putExtra("peliculaNombre", pelicula)
             intento.putExtra("idMovie", posMovie)
-            intento.putExtra("asientosDisponibles", asientosDisponibles)
+            intento.putExtra("asientosDisponiblesSeat", asientosDisponibles)
 
             if(asientosDisponibles < 20){
-                var i = 0
+                var i = 1
                 if(bundle != null) {
                     while (i < (20 - asientosDisponibles)) {
-                        var elementoBundle:String = bundle.getString("asientoTomado$i").toString()
-                        intent.putExtra("asientoTomado$i", elementoBundle)
+                        var i2 = i-1
+                        var elementoBundle:String = bundle.getString("asientoTomado$i2").toString()
+
+                        intento.putExtra("asientoTomado$i2", elementoBundle)
+                        Log.d("RESUMeN ASI", "$elementoBundle")
                         i++
                     }
                 }

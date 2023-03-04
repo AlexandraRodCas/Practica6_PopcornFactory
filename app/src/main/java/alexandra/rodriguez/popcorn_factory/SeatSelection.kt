@@ -163,8 +163,7 @@ class SeatSelection : AppCompatActivity() {
                         intent.putExtra("asiento", selectedOption)
                         intent.putExtra("id", posMovie)
                         intent.putExtra("header", header)
-                        intent.putExtra("asientosDisponibles", asientosDisponibles)
-                        Log.d("Aqui pasan cosas", "$asientosDisponibles")
+                        intent.putExtra("asientosDisponiblesSeat", asientosDisponibles)
                         Toast.makeText(this, "Enjoy the movie", Toast.LENGTH_LONG).show()
                         if(asientosDisponibles < 20){
                             var i = 0
@@ -172,7 +171,7 @@ class SeatSelection : AppCompatActivity() {
                                 while (i < (20 - asientosDisponibles)) {
                                     var elementoBundle:String = bundle.getString("asientoTomado$i").toString()
                                     intent.putExtra("asientoTomado$i", elementoBundle)
-
+                                    Log.d("SELECT ASI", "$elementoBundle")
                                     i++
                                 }
                             }
