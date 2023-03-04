@@ -34,6 +34,52 @@ class SeatSelection : AppCompatActivity() {
         val row3: RadioGroup = findViewById(R.id.row3)
         val row4: RadioGroup = findViewById(R.id.row4)
 
+
+        for (i in 0 until row1.childCount) {
+            val checadorRadioButton = row1.getChildAt(i) as RadioButton
+            if (bundle != null) {
+                for (j in 0 until 25) {
+                    if ((checadorRadioButton.text).equals(bundle.getString("asientoTomado$j"))) {
+                        checadorRadioButton.isEnabled = false
+                        checadorRadioButton.background = ContextCompat.getDrawable(this, R.drawable.radio_disabled)
+                    }
+                }
+            }
+        }
+        for (i in 0 until row2.childCount) {
+            val checadorRadioButton = row2.getChildAt(i) as RadioButton
+            if (bundle != null) {
+                for (j in 0 until 30) {
+                    if ((checadorRadioButton.text).equals(bundle.getString("asientoTomado$j"))) {
+                        checadorRadioButton.isEnabled = false
+                        checadorRadioButton.background = ContextCompat.getDrawable(this, R.drawable.radio_disabled)
+                    }
+                }
+            }
+        }
+        for (i in 0 until row3.childCount) {
+            val checadorRadioButton = row3.getChildAt(i) as RadioButton
+            if (bundle != null) {
+                for (j in 0 until 35) {
+                    if ((checadorRadioButton.text).equals(bundle.getString("asientoTomado$j"))) {
+                        checadorRadioButton.isEnabled = false
+                        checadorRadioButton.background = ContextCompat.getDrawable(this, R.drawable.radio_disabled)
+                    }
+                }
+            }
+        }
+        for (i in 0 until row4.childCount) {
+            val checadorRadioButton = row4.getChildAt(i) as RadioButton
+            if (bundle != null) {
+                for (j in 0 until 40) {
+                    if ((checadorRadioButton.text).equals(bundle.getString("asientoTomado$j"))) {
+                        checadorRadioButton.isEnabled = false
+                        checadorRadioButton.background = ContextCompat.getDrawable(this, R.drawable.radio_disabled)
+                    }
+                }
+            }
+        }
+
         row1.setOnCheckedChangeListener { group, checkedId ->
             if(checkedId > -1){
                 row2.clearCheck()
@@ -45,18 +91,6 @@ class SeatSelection : AppCompatActivity() {
                 val selectedRadioButton = findViewById<RadioButton>(checkedId)
                 selectedOption = selectedRadioButton.text as String
 
-                var i = 0
-                while (i <= (20-asientosDisponibles)){
-                    if(bundle!= null){
-                        if(selectedOption.equals(bundle.getString("asientoTomado$i").toString())){
-                            row1.clearCheck()
-                            selectedRadioButton.isEnabled = false
-                            selectedRadioButton.background= ContextCompat.getDrawable(this, R.drawable.radio_disabled)
-                            Toast.makeText(this, "This seat is alredy chosen", Toast.LENGTH_LONG).show()
-                        }
-                    }
-                    i++
-                }
             }
         }
 
@@ -69,19 +103,6 @@ class SeatSelection : AppCompatActivity() {
                 row2.check(checkedId)
                 val selectedRadioButton = findViewById<RadioButton>(checkedId)
                 selectedOption = selectedRadioButton.text as String
-
-                var i = 0
-                while (i <= (20-asientosDisponibles)){
-                    if(bundle!= null){
-                        if(selectedOption.equals(bundle.getString("asientoTomado$i").toString())){
-                            row1.clearCheck()
-                            selectedRadioButton.isEnabled = false
-                            selectedRadioButton.background= ContextCompat.getDrawable(this, R.drawable.radio_disabled)
-                            Toast.makeText(this, "This seat is alredy chosen", Toast.LENGTH_LONG).show()
-                        }
-                    }
-                    i++
-                }
 
             }
         }
@@ -96,18 +117,6 @@ class SeatSelection : AppCompatActivity() {
                 val selectedRadioButton = findViewById<RadioButton>(checkedId)
                 selectedOption = selectedRadioButton.text as String
 
-                var i = 0
-                while (i <= (20-asientosDisponibles)){
-                    if(bundle!= null){
-                        if(selectedOption.equals(bundle.getString("asientoTomado$i").toString())){
-                            row1.clearCheck()
-                            selectedRadioButton.isEnabled = false
-                            selectedRadioButton.background= ContextCompat.getDrawable(this, R.drawable.radio_disabled)
-                            Toast.makeText(this, "This seat is alredy chosen", Toast.LENGTH_LONG).show()
-                        }
-                    }
-                    i++
-                }
             }
         }
 
@@ -120,19 +129,6 @@ class SeatSelection : AppCompatActivity() {
                 row4.check(checkedId)
                 val selectedRadioButton = findViewById<RadioButton>(checkedId)
                 selectedOption = selectedRadioButton.text as String
-
-                var i = 0
-                while (i <= (20-asientosDisponibles)){
-                    if(bundle!= null){
-                        if(selectedOption.equals(bundle.getString("asientoTomado$i").toString())){
-                            row1.clearCheck()
-                            selectedRadioButton.isEnabled = false
-                            selectedRadioButton.background= ContextCompat.getDrawable(this, R.drawable.radio_disabled)
-                            Toast.makeText(this, "This seat is alredy chosen", Toast.LENGTH_LONG).show()
-                        }
-                    }
-                    i++
-                }
 
             }
         }
