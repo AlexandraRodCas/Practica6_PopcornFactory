@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="@color/almostblack"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/mustard"
+        android:text="Write your name"
+        android:layout_marginHorizontal="20dp"
+        android:textSize="25sp"
+        android:layout_marginTop="50dp"/>
+
+    <EditText
+        android:id="@+id/caja_nombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:textColor="@color/mustard"
+        android:inputType="textPersonName"
+        android:layout_marginTop="20dp"
+        android:layout_marginHorizontal="20dp"
+        android:hint="Name"
+        android:textColorHint="@color/mustard"/>
+
+    <Button
+        android:id="@+id/confirm_nombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_button"
+        android:textColor="@color/almostblack"
+        android:text="Confirm"
+        android:layout_marginTop="40dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:paddingHorizontal="70dp" />
+</LinearLayout>
