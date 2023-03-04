@@ -27,25 +27,22 @@ class CatalogActivity : AppCompatActivity() {
         if(bundle != null) {
             val nombreCliente = bundle.getString("nombre").toString()
             val asientoCliente = bundle.getString("asiento").toString()
-            asientosDisponiblesBundle = bundle.getInt("asientosDisponiblesSeat")
-            clienteList.add(Cliente(nombreCliente, asientoCliente))
+            asientosDisponiblesBundle = bundle.getInt("asientosDisponibles")
 
             nombrePeliculaCliente = bundle.getString("peliculaNombre").toString()
-            var i = 1
-
-            Log.d("ASIENTOS", "$asientosDisponiblesBundle")
+            var i = 0
+            clienteList.add(Cliente(nombreCliente, asientoCliente))
 
             if(asientosDisponiblesBundle<20){
-                while (i < (20-asientosDisponiblesBundle)){
-                    var i2 = i-1
-                    var elementoBundle:String = bundle.getString("asientoTomado$i2").toString()
-                    Log.d("ASIENTOS ARRAY", "$elementoBundle")
+                while (i <= (20-asientosDisponiblesBundle)){
+                    var elementoBundle:String = bundle.getString("asientoTomado$i").toString()
                     if(elementoBundle != null){
                         clienteList.add(Cliente("pato", elementoBundle))
                     }
                     i++
                 }
             }
+
         }
 
         cargarPeliculas()
@@ -69,7 +66,8 @@ class CatalogActivity : AppCompatActivity() {
         peliculas.add(Pelicula("Harry Potter",R.drawable.harrypotter, R.drawable.harrypotterheader, "Late one night, Albus Dumbledore and Minerva McGonagall, professors at Hogwarts School of Witchcraft and Wizardry, along with the school's groundskeeper Rubeus Hagrid, deliver a recently orphaned infant named Harry Potter to his only remaining relatives, the Dursleys. Ten years later, Harry has lived a difficult life with the Dursleys. After inadvertently causing an accident during a family trip to London Zoo, Harry begins receiving unsolicited letters by owls. After he and the Dursleys escape to an island to avoid more letters, Hagrid re-appears and informs Harry that he is a wizard and has been accepted into Hogwarts against the Dursleys' wishes. After taking Harry to Diagon Alley to buy his supplies for Hogwarts and a pet owl named Hedwig as a birthday present, Hagrid informs him of his past: Harry's parents James and Lily Potter died due to a Killing Curse at the hands of the malevolent and all-powerful wizard: Lord Voldemort. Harry, the only survivor in the chaos, thus becomes well-known in the wizarding world as The Boy Who Lived",arrayListOf()))
 
         if(asientosDisponiblesBundle<20){
-            var i = 1
+            Log.d("ESTAMOS ADENTRO DEL IF", "$asientosDisponiblesBundle")
+            var i = 0
             while (i<peliculas.size){
                 if((peliculas[i].titulo).equals(nombrePeliculaCliente)){
                      clienteList
@@ -115,21 +113,18 @@ class CatalogActivity : AppCompatActivity() {
             title.setText(pelicula.titulo)
 
             imagen.setOnClickListener {
-                var seatsAvailable = 20-pelicula.seat.size
+                var seatsAvailable= 20-pelicula.seat.size
                 var intento = Intent(contexto, MovieDetail::class.java)
                 intento.putExtra("titulo", pelicula.titulo)
                 intento.putExtra("sinopsis", pelicula.sinopsis)
                 intento.putExtra("header", pelicula.header)
                 intento.putExtra("image", pelicula.image)
                 intento.putExtra("numberSeats", seatsAvailable)
-
                 if(pelicula.seat.size >-1){
                     var i = 0
                     while (i < pelicula.seat.size) {
-                        var elemento = pelicula.seat[i].asiento
+                        var elemento = pelicula.seat[0].asiento
                         intento.putExtra("asientoTomado$i", elemento)
-                        Log.d("CATA ASI", "$elemento")
-
                         i++
                     }
                 }
